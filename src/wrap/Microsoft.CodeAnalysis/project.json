@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "bin": {
+        "assembly": "../../../packages/Microsoft.CodeAnalysis.Common/lib/net45/Microsoft.CodeAnalysis.dll"
+      }
+    },
+    "dnx451": {
+      "bin": {
+        "assembly": "../../Marten/bin/Debug/Microsoft.CodeAnalysis.dll"
+      },
+      "dependencies": {
+        "System.Collections.Immutable": "1.0.0-*",
+        "System.Reflection.Metadata": "1.0.0-*"
+      }
+    }
+  }
+}

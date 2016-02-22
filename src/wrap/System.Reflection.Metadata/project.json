@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "bin": {
+        "assembly": "../../../packages/System.Reflection.Metadata/lib/portable-net45+win8/System.Reflection.Metadata.dll"
+      }
+    },
+    "dnx451": {
+      "bin": {
+        "assembly": "../../Marten/bin/Debug/System.Reflection.Metadata.dll"
+      },
+      "dependencies": {
+        "System.Collections.Immutable": "1.0.0-*"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0-rc1-final",
+  "description": "Marten Testing DotNetCore",
+  "authors": [ "" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "tooling": {
+    "defaultNamespace": "Marten.Testing.DotNetCore"
+  },
+
+  "dependencies": {
+
+  },
+
+  "commands": {
+    "Marten.Testing.DotNetCore": "Marten.Testing.DotNetCore"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "Baseline": "1.0.0-*",
+        "Marten": "1.0.0-*",
+        "Microsoft.CodeAnalysis": "1.0.0-*",
+        "Microsoft.CodeAnalysis.CSharp": "1.0.0-*",
+        "Newtonsoft.Json": "1.0.0-*",
+        "Npgsql": "1.0.0-*",
+        "Remotion.Linq": "1.0.0-*",
+        "System.Collections.Immutable": "1.0.0-*",
+        "System.Reflection.Metadata": "1.0.0-*"
+      },
+      "frameworkAssemblies": {
+        "System.Data": "4.0.0.0"
+      }
+
+    }
+  }
+}

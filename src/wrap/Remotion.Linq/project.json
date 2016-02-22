@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "bin": {
+        "assembly": "../../../packages/Remotion.Linq/lib/net45/Remotion.Linq.dll"
+      }
+    },
+    "dnx451": {
+      "bin": {
+        "assembly": "../../Marten/bin/Debug/Remotion.Linq.dll"
+      }
+    }
+  }
+}

@@ -13,6 +13,8 @@ namespace Marten.Codegen
     {
         private readonly IList<MetadataReference> _references = new List<MetadataReference>();
 
+        public static string[] HintPaths { get; set; }
+
         public AssemblyGenerator()
         {
             ReferenceAssemblyContainingType<object>();
@@ -27,10 +29,9 @@ namespace Marten.Codegen
                 if (alreadyReferenced)
                     return;
 
-
                 try
                 {
-                    _references.Add(MetadataReference.CreateFromFile(assembly.Location));
+                    _references.Add(CreateAssemblyReference(assembly));
                     foreach (var assemblyName in assembly.GetReferencedAssemblies())
                     {
                         var referencedAssembly = Assembly.Load(assemblyName);
@@ -50,6 +51,23 @@ namespace Marten.Codegen
             {
                 throw new AssemblyReferenceException(assembly, e);
             }
+        }
+
+        private static PortableExecutableReference CreateAssemblyReference(Assembly assembly)
+        {
+            if (string.IsNullOrEmpty(assembly.Location))
+            {
+                var path = GetPath(assembly);
+                return path != null ? MetadataReference.CreateFromFile(path) : null;
+            }
+            return MetadataReference.CreateFromFile(assembly.Location);
+        }
+
+        private static String GetPath(Assembly assembly)
+        {
+            return HintPaths?
+                .Select(hintPath => Path.Combine(hintPath, assembly.GetName().Name + ".dll"))
+                .FirstOrDefault(File.Exists);
         }
 
         public void ReferenceAssemblyContainingType<T>()

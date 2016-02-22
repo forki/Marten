@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "dnx451": {
+      "bin": {
+        "assembly": "../../Marten/bin/Debug/Marten.dll",
+        "pdb": "../../Marten/bin/Debug/Marten.pdb"
+      },
+      "dependencies": {
+        "Npgsql": "1.0.0-*",
+        "Baseline": "1.0.0-*",
+        "Microsoft.CodeAnalysis.CSharp": "1.0.0-*",
+        "Microsoft.CodeAnalysis": "1.0.0-*",
+        "Newtonsoft.Json": "1.0.0-*",
+        "Remotion.Linq": "1.0.0-*",
+        "System.Collections.Immutable": "1.0.0-*"
+      }
+    },
+    "net451": {
+      "wrappedProject": "../../Marten/Marten.csproj",
+      "bin": {
+        "assembly": "../../Marten/obj/{configuration}/Marten.dll",
+        "pdb": "../../Marten/obj/{configuration}/Marten.pdb"
+      },
+      "dependencies": {
+        "Baseline": "1.0.0-*",
+        "Microsoft.CodeAnalysis.CSharp": "1.0.0-*",
+        "Microsoft.CodeAnalysis": "1.0.0-*",
+        "Newtonsoft.Json": "1.0.0-*",
+        "Npgsql": "1.0.0-*",
+        "Remotion.Linq": "1.0.0-*",
+        "System.Collections.Immutable": "1.0.0-*",
+        "System.Reflection.Metadata": "1.0.0-*"
+      }
+    }
+  }
+}

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marten.Testing", "Marten.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marten.Testing.OtherAssembly", "Marten.Testing.OtherAssembly\Marten.Testing.OtherAssembly.csproj", "{EE53C3D3-65AE-42EF-92F4-116E8D6889DD}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Marten.Testing.DotNetCore", "Marten.Testing.DotNetCore\Marten.Testing.DotNetCore.xproj", "{B867A86E-C23C-403C-859F-7E2AB541EB6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EE53C3D3-65AE-42EF-92F4-116E8D6889DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE53C3D3-65AE-42EF-92F4-116E8D6889DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE53C3D3-65AE-42EF-92F4-116E8D6889DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B867A86E-C23C-403C-859F-7E2AB541EB6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B867A86E-C23C-403C-859F-7E2AB541EB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B867A86E-C23C-403C-859F-7E2AB541EB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B867A86E-C23C-403C-859F-7E2AB541EB6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
