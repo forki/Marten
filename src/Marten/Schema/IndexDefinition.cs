@@ -7,14 +7,14 @@ namespace Marten.Schema
     public class IndexDefinition
     {
         private readonly DocumentMapping _parent;
-        private readonly string[] _columns;
+        private readonly IList<string> _columns;
         private string _indexName;
 
 
         public IndexDefinition(DocumentMapping parent, params string[] columns)
         {
             _parent = parent;
-            _columns = columns;
+            _columns = columns.ToList();
         }
 
         public IndexMethod Method { get; set; } = IndexMethod.btree;
@@ -36,7 +36,7 @@ namespace Marten.Schema
 
         public string Modifier { get; set; }
 
-        public IEnumerable<string> Columns => _columns;
+        public IList<string> Columns => _columns;
 
         public string ToDDL()
         {

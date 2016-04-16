@@ -12,6 +12,7 @@ namespace Marten.Linq
         public static readonly string CONTAINS = nameof(string.Contains);
         public static readonly string STARTS_WITH = nameof(string.StartsWith);
         public static readonly string ENDS_WITH = nameof(string.EndsWith);
+        public static readonly string CONTAINSKEY = nameof(Dictionary<string, object>.ContainsKey);
 
         private static readonly IDictionary<ExpressionType, string> _operators = new Dictionary<ExpressionType, string>
         {
@@ -62,7 +63,8 @@ namespace Marten.Linq
 
             // Added
             new IsOneOf(),
-            new IsInGenericEnumerable()
+            new IsInGenericEnumerable(),
+            new ContainsKey()
         };
 
 

@@ -18,7 +18,9 @@ namespace Marten.Util
             var martenQueryable = CastToMartenQueryable(queryable);
             return martenQueryable.Explain();
         }
+
         #endregion
+
         #region ToListJson
 
         public static async Task<string> ToListJsonAsync<T>(this IQueryable<T> queryable,
