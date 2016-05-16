@@ -219,7 +219,7 @@ namespace Marten.Schema
             }
             if (idType == typeof(Guid))
             {
-                return new GuidIdGeneration();
+                return new SequentialGuidGeneration();
             }
             if (idType == typeof(int) || idType == typeof(long))
             {

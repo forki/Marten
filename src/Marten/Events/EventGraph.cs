@@ -90,7 +90,7 @@ namespace Marten.Events
         }
 
         public PropertySearching PropertySearching { get; } = PropertySearching.JSON_Locator_Only;
-        public IIdGeneration IdStrategy { get; set; } = new GuidIdGeneration();
+        public IIdGeneration IdStrategy { get; set; } = new SequentialGuidGeneration();
         public MemberInfo IdMember { get; } = ReflectionHelper.GetProperty<EventStream>(x => x.Id);
 
         string[] IDocumentMapping.SelectFields()

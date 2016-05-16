@@ -44,7 +44,7 @@ namespace Marten.Events
         public string EventTypeName { get; set; }
         public string Alias { get; }
         public MemberInfo IdMember { get; }
-        public IIdGeneration IdStrategy { get; set; } = new GuidIdGeneration();
+        public IIdGeneration IdStrategy { get; set; } = new SequentialGuidGeneration();
         public NpgsqlDbType IdType { get; } = NpgsqlDbType.Uuid;
 
         public TableName Table =>  new TableName(_options.Events.DatabaseSchemaName, "mt_events");

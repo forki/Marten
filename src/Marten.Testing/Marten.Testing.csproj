@@ -216,7 +216,7 @@
     <Compile Include="Schema\Sequences\CustomKeyGenerationTests.cs" />
     <Compile Include="Schema\Sequences\Users.cs" />
     <Compile Include="Schema\Sequences\DocumentIdStrategyTests.cs" />
-    <Compile Include="Schema\Sequences\CombGuidIdGenerationTests.cs" />
+    <Compile Include="Schema\Sequences\SequentialGuidGenerationTests.cs" />
     <Compile Include="Schema\Sequences\IdentityKeyGenerationTests.cs" />
     <Compile Include="Schema\table_regeneration_with_new_searchable_fields_Tests.cs" />
     <Compile Include="Schema\when_deriving_the_table_definition_from_the_database_schema_Tests.cs" />

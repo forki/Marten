@@ -369,10 +369,10 @@ namespace Marten.Testing.Schema
         }
 
         [Fact]
-        public void use_guid_id_generation_for_guid_id()
+        public void use_sequential_guid_id_generation_for_guid_id()
         {
             var mapping = DocumentMapping.For<UpperCaseProperty>();
-            mapping.IdStrategy.ShouldBeOfType<GuidIdGeneration>();
+            mapping.IdStrategy.ShouldBeOfType<SequentialGuidGeneration>();
         }
 
         [Fact]

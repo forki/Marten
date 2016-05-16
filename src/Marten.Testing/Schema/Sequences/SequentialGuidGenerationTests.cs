@@ -7,13 +7,13 @@ using Xunit;
 
 namespace Marten.Testing.Schema.Sequences
 {
-    public class CombGuidIdGenerationTests
+    public class SequentialGuidGenerationTests
     {
         [Fact]
         public void When_ids_are_generated_the_first_id_should_be_less_than_the_second()
         {
-            var id1 = Format(CombGuidIdGeneration.NewGuid(new DateTime(2015, 03, 31, 21, 23, 00)));
-            var id2 = Format(CombGuidIdGeneration.NewGuid(new DateTime(2015, 03, 31, 21, 23, 01)));
+            var id1 = Format(SequentialGuidGeneration.NewGuid(new DateTime(2015, 03, 31, 21, 23, 00)));
+            var id2 = Format(SequentialGuidGeneration.NewGuid(new DateTime(2015, 03, 31, 21, 23, 01)));
 
             id1.CompareTo(id2).ShouldBe(-1);
         }
@@ -23,7 +23,7 @@ namespace Marten.Testing.Schema.Sequences
         {
             using (var container = ContainerFactory.Configure(
 				// SAMPLE: configuring-global-sequentialguid
-                options => options.DefaultIdStrategy = (mapping, storeOptions) => new CombGuidIdGeneration()
+                options => options.DefaultIdStrategy = (mapping, storeOptions) => new SequentialGuidGeneration()
 				// ENDSAMPLE 
                         ))
             {
@@ -44,21 +44,6 @@ namespace Marten.Testing.Schema.Sequences
 
                 id1.CompareTo(id2).ShouldBe(-1);
                 id2.CompareTo(id3).ShouldBe(-1);
-            }
-        }
-
-        [Fact]
-        public void When_CombGuid_is_defined_for_a_single_document_then_Guid_should_be_used_as_Default()
-        {
-            using (var container = ContainerFactory.Configure(
-				// SAMPLE: configuring-mapping-specific-sequentialguid
-				options => options.Schema.For<UserWithGuid>().IdStrategy(new CombGuidIdGeneration())
-				// ENDSAMPLE 
-                        ))
-            {
-                var store = container.GetInstance<IDocumentStore>();
-                store.Schema.MappingFor(typeof (UserWithGuid)).IdStrategy.ShouldBeOfType<CombGuidIdGeneration>();
-                store.Schema.MappingFor(typeof (UserWithGuid2)).IdStrategy.ShouldBeOfType<GuidIdGeneration>();
             }
         }
 

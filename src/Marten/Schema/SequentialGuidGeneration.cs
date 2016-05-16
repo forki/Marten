@@ -6,9 +6,9 @@ using System.Reflection;
 namespace Marten.Schema
 {
     /// <summary>
-    /// Comb Guid Id Generation. More info http://www.informit.com/articles/article.aspx?p=25862
+    /// Sequential Guid Generation. More info http://www.informit.com/articles/article.aspx?p=25862
     /// </summary>
-    public class CombGuidIdGeneration : IIdGeneration
+    public class SequentialGuidGeneration : IIdGeneration
     {
         public IEnumerable<StorageArgument> ToArguments()
         {
@@ -19,7 +19,7 @@ namespace Marten.Schema
         {
             return $@"
 BLOCK:if (document.{idMember.Name} == System.Guid.Empty)
-document.{idMember.Name} = Marten.Schema.CombGuidIdGeneration.NewGuid();
+document.{idMember.Name} = Marten.Schema.SequentialGuidGeneration.NewGuid();
 assigned = true;
 END
 BLOCK:else

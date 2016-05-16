@@ -147,7 +147,7 @@
     <Compile Include="Schema\ActualIndex.cs" />
     <Compile Include="Schema\QualifiedDatabaseName.cs" />
     <Compile Include="Schema\ColumnValue.cs" />
-    <Compile Include="Schema\CombGuidIdGeneration.cs" />
+    <Compile Include="Schema\SequentialGuidGeneration.cs" />
     <Compile Include="Schema\DocumentAliasAttribute.cs" />
     <Compile Include="Schema\ForeignKeyAttribute.cs" />
     <Compile Include="Schema\ForeignKeyDefinition.cs" />
