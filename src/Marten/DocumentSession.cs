@@ -166,11 +166,10 @@ namespace Marten
             var batch = new UpdateBatch(_options, _serializer, _connection, IdentityMap.Versions);
             var changes = _unitOfWork.ApplyChanges(batch);
 
-
             try
             {
                 _connection.Commit();
-            }
+            }           
             catch (Exception)
             {
                 _connection.Rollback();

@@ -9,6 +9,7 @@ namespace Marten.Services
 {
     public class ManagedConnection : IManagedConnection
     {
+        private readonly IsolationLevel _isolationLevel;
         private readonly Lazy<TransactionState> _connection; 
 
         public ManagedConnection(IConnectionFactory factory) : this (factory, CommandRunnerMode.AutoCommit)
@@ -18,6 +19,7 @@ namespace Marten.Services
         // 30 is NpgsqlCommand.DefaultTimeout - ok to burn it to the call site?
         public ManagedConnection(IConnectionFactory factory, CommandRunnerMode mode, IsolationLevel isolationLevel = IsolationLevel.ReadCommitted, int commandTimeout = 30)
         {
+            _isolationLevel = isolationLevel;
             _connection = new Lazy<TransactionState>(() => new TransactionState(factory, mode, isolationLevel, commandTimeout));
         }
 
@@ -33,6 +35,14 @@ namespace Marten.Services
         public void Rollback()
         {
             _connection.Value.Rollback();
+        }
+
+        public void BeginSession()
+        {
+            if (_isolationLevel == IsolationLevel.Serializable)
+            {
+                BeginTransaction();
+            }
         }
 
         public void BeginTransaction()
@@ -61,6 +71,11 @@ namespace Marten.Services
             {
                 action(cmd);
                 Logger.LogSuccess(cmd);
+            }
+            catch (PostgresException e) when (e.SqlState == PostgresErrorCodes.SerializationFailure)
+            {
+                Logger.LogFailure(cmd, e);
+                throw new ConcurrentUpdateException(e);
             }
             catch (NpgsqlException e) when (e.Message.IndexOf(EventContracts.UnexpectedMaxEventIdForStream, StringComparison.Ordinal) > -1)
             {
@@ -201,8 +216,6 @@ namespace Marten.Services
             }
         }
 
-
-
         public void Dispose()
         {
             if (_connection.IsValueCreated)
@@ -210,5 +223,10 @@ namespace Marten.Services
                 _connection.Value.Dispose();
             }
         }
+    }
+
+    public static class PostgresErrorCodes
+    {
+        public const string SerializationFailure = "40001";
     }
 }
